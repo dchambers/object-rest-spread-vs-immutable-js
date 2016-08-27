@@ -54,3 +54,8 @@ test('map.optimizedMutate works as expected', t => {
   t.deepEqual(map.optimizedMutate(map.create(2, 2)).toJS(), expectedMutatedObj);
   t.deepEqual(map.optimizedMutate(map.create(2, 2), 1).toJS(), expectedPartiallyMutatedObj);
 });
+
+test('map.globalMutate works as expected', t => {
+  t.deepEqual(map.globalMutate(map.create(2, 2)).toJS(), expectedMutatedObj);
+  t.deepEqual(map.globalMutate(map.create(2, 2), 1).toJS(), expectedPartiallyMutatedObj);
+});

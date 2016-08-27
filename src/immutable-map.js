@@ -27,8 +27,28 @@ const optimizedMutate = (map, modificationDepth = 0) => {
   });
 };
 
+const mutateGlobal = (mutableMap, mapNode, modificationDepth, path) => {
+  let isOdd = true;
+
+  for (const mapKey of mapNode.keys()) {
+    const updatedPath = [...path, mapKey];
+
+    if ((modificationDepth > 0) || !isOdd) {
+      mutateGlobal(mutableMap, mapNode.get(mapKey), modificationDepth - 1, updatedPath);
+    }
+    else {
+      mutableMap.setIn(updatedPath, '...');
+    }
+    isOdd = !isOdd;
+  }
+};
+
+const globalMutate = (map, modificationDepth = 0) =>
+  map.withMutations(m => mutateGlobal(m, map, modificationDepth, []));
+
 export default {
   create,
   mutate,
-  optimizedMutate
+  optimizedMutate,
+  globalMutate
 };
