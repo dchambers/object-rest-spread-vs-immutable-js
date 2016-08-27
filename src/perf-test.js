@@ -38,3 +38,4 @@ const runProfileSet = (name, create, mutate) => {
 runProfileSet('Object Rest/Spread Tests', obj.create, obj.mutate);
 runProfileSet('Immutable Tests', immutableMap.create, immutableMap.mutate);
 runProfileSet('Immutable Tests (Optimized)', immutableMap.create, immutableMap.optimizedMutate);
+runProfileSet('Immutable Tests (Global)', immutableMap.create, immutableMap.globalMutate);
