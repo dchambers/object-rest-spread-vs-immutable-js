@@ -1,0 +1,31 @@
+{
+  "extends": [
+    "airbnb",
+    "plugin:ava/recommended"
+  ],
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "plugins": [
+    "ava"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+  },
+  "rules": {
+    "max-len": [1, 120, 2, {ignoreComments: true}],
+    "brace-style": ["error", "stroustrup"],
+    "object-curly-spacing": ["error", "never"],
+    "comma-dangle": ["error", "never"],
+    "no-duplicate-imports": ["off"],
+    "no-else-return": ["off"],
+    guard-for-in: "off",
+    'no-restricted-syntax': [
+      'error',
+      'LabeledStatement',
+      'WithStatement',
+    ]
+  }
+}
