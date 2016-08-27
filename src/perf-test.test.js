@@ -20,16 +20,6 @@ const expectedObj = {
   }
 };
 
-const expectedMutatedObj = {
-  'item #1': '...',
-  'item #2': {
-    'item #1': '...',
-    'item #2': {'item #1': '...', 'item #2': {}, 'item #3': '...'},
-    'item #3': '...'
-  },
-  'item #3': '...'
-};
-
 const expectedPartiallyMutatedObj = {
   'item #1': {
     'item #1': '...',
@@ -48,17 +38,27 @@ const expectedPartiallyMutatedObj = {
   }
 };
 
+const expectedMutatedObj = {
+  'item #1': '...',
+  'item #2': {
+    'item #1': '...',
+    'item #2': {'item #1': '...', 'item #2': {}, 'item #3': '...'},
+    'item #3': '...'
+  },
+  'item #3': '...'
+};
+
 test('obj.create works as expected', t => {
   t.deepEqual(obj.create(3, 3), expectedObj);
+});
+
+test('map.create works as expected', t => {
+  t.deepEqual(map.create(3, 3).toJS(), expectedObj);
 });
 
 test('obj.mutate works as expected', t => {
   t.deepEqual(obj.mutate(obj.create(3, 3)), expectedMutatedObj);
   t.deepEqual(obj.mutate(obj.create(3, 3), 1), expectedPartiallyMutatedObj);
-});
-
-test('map.create works as expected', t => {
-  t.deepEqual(map.create(3, 3).toJS(), expectedObj);
 });
 
 test('map.mutate works as expected', t => {
